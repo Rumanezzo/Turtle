@@ -2,7 +2,7 @@ from turtle import *
 
 s = Screen()
 t = Turtle()
-s.setup(1366, 768, (1536 - 1366) // 2, 0)
+s.setup(0.9, 0.8)
 s.title('Эксперименты с Орнаментами!')  # Заголовок
 s.mode('logo')  # Черепашка на север
 s.bgcolor('black')  # Цвет Фона
