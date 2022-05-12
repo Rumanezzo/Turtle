@@ -1,4 +1,4 @@
-from turtle import Turtle, mainloop
+from turtle import Turtle, exitonclick
 from time import perf_counter as clock
 
 
@@ -142,4 +142,4 @@ def main():
 if __name__ == '__main__':
     msg = main()
     print(msg)
-    mainloop()
+    exitonclick()
