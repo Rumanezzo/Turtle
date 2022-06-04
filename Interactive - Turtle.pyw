@@ -1,6 +1,5 @@
 from turtle import *
 
-# ------------------------------------------------------------------------------+
 title('Интерактивная Черепашка!')  # Заголовок
 mode('logo')  # Черепашка на север
 bgcolor('black')  # Цвет Фона
@@ -14,10 +13,6 @@ colors = ["aquamarine", "bisque", "burlywood", "chartreuse", "magenta", "moccasi
           "salmon", "gold", "lavender", "gainsboro", "cornsilk", "ivory", "linen", "honeydew", "maroon", "azure",
           "sienna", "peru"]
 
-
-# ------------------------------------------------------------------------------+
-
-# Начало секции определения функций
 
 def up():
     fd(50)

@@ -1,59 +1,51 @@
 import turtle
 
 
-def make_window(clr='grey', title="Tess, Alex, Mara and Miha"):
+def make_window(clr_='grey', title=''):
     w = turtle.Screen()
-    w.bgcolor(clr)
+    w.bgcolor(clr_)
     w.title(title)
     return w
 
 
-def make_turtle(clr='red', sz=5, shp='turtle'):
-    t = turtle.Turtle()
-    t.color(clr)
-    t.pensize(sz)
-    t.shape(shp)
-    return t
+def make_turtle(clr_='red', sz=5, shp='turtle', pos_x=0, pos_y=0):
+    t_ = turtle.Turtle()
+    t_.color(clr_)
+    t_.pensize(sz)
+    t_.shape(shp)
+
+    t_.pu()
+    t_.ht()
+    t_.goto(pos_x, pos_y)
+    t_.st()
+    return t_
 
 
 def spiro(name, clock=0):
     name.penup()
     size = 20
-    if clock == 0:
-        def f():
-            name.rt(24)
-    else:
-        def f():
-            name.lt(24)
-    for i in range(30):
+    for i_ in range(30):
         name.stamp()
         size += 3
-        name.shapesize(1, 1, i + 1)
+        name.shapesize(1, 1, i_ + 1)
         name.fd(size)
-        f()
+        name.rt(24 * clock)
 
 
-def ex(): wn.bye()
-
-
-turtle.setup(0.9, 0.8)  # Установка Размеров Окна - Пользуемся везде где можно!
+turtle.setup(0.9, 0.9)  # Установка Размеров Окна относительное - пользуемся везде где можно!
 wn = make_window()
-tess = make_turtle('blue')
-alex = make_turtle('yellow')
-mara = make_turtle('red')
-miha = make_turtle('green')
+c = ('blue', 'yellow', 'red', 'green', 'cyan', 'magenta', 'black', 'white')
+x = (0, 0, 150, 150, -150, -150, 300, -300)
+y = (0, 0, 150, -150, 150, -150, 0, 0)
+s = (1, -1, 2, -2, 2, -2, 2, -2)
 
-spiro(tess, 0)
-spiro(alex, 1)
-mara.rt(45)
-spiro(mara, 0)
-miha.lt(45)
-spiro(miha, 1)
-miha.ht()
-miha.goto(-500, 280)
-miha.color('black')
-miha.write('Нажмите Клавишу [q] или кликните Мышкой!', font=('FreeMono', 14, 'bold'))
-wn.onkey(ex, 'q')
+for clr, i, j, k in zip(c, x, y, s):
+    t = make_turtle(clr, pos_x=i, pos_y=j)
+    wn.title(f'Создаем несколько черепашек и пусть они крутят спирали! -> {clr} turtle is going!!!')
+    spiro(t, k)
+wn.title('Для завершения нажмите клавишу q, или просто кликнете по экрану левой клавишей мышки!')
+
+wn.onkey(wn.bye, 'q')
 wn.listen()
+
 wn.exitonclick()
-# wn.mainloop()

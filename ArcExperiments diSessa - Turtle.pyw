@@ -1,20 +1,51 @@
 from turtle import *
 
-title('Эксперименты с Дугами и Цветами!')  # Заголовок
-mode('logo')  # Черепашка на север
-bgcolor('black')  # Цвет Фона
-color('gray', 'green')  # Цвет Линии и Заливки
-shape('turtle')  # Форма Черепашки
+title("Эксперименты с Дугами и Цветами!")  # Заголовок
+mode("logo")  # Черепашка на север
+bgcolor("black")  # Цвет Фона
+color("gray", "green")  # Цвет Линии и Заливки
+shape("turtle")  # Форма Черепашки
 width(5)  # Ширина Линии
 speed(0)  # Скорость Движения
 
-colors = ["aquamarine", "bisque", "burlywood", "chartreuse", "magenta", "moccasin", "navy", "plum", "tan", "thistle",
-          "turquoise", "tomato", "red", "green", "blue", "orange", "purple", "pink", "yellow", "brown", "violet",
-          "salmon", "gold", "lavender", "gainsboro", "cornsilk", "ivory", "linen", "honeydew", "maroon", "azure",
-          "sienna", "peru"]
-
+colors = (
+    "aquamarine",
+    "bisque",
+    "burlywood",
+    "chartreuse",
+    "magenta",
+    "moccasin",
+    "navy",
+    "plum",
+    "tan",
+    "thistle",
+    "turquoise",
+    "tomato",
+    "red",
+    "green",
+    "blue",
+    "orange",
+    "purple",
+    "pink",
+    "yellow",
+    "brown",
+    "violet",
+    "salmon",
+    "gold",
+    "lavender",
+    "gainsboro",
+    "cornsilk",
+    "ivory",
+    "linen",
+    "honeydew",
+    "maroon",
+    "azure",
+    "sienna",
+    "peru",
+)
 
 # Начало секции определения функций
+
 
 def arc_r(r, deg):
     for x in range(deg):
@@ -28,7 +59,7 @@ def arc_l(r, deg):
         lt(1)
 
 
-def hammer(r=1, fill='maroon'):
+def hammer(r=1, fill="maroon"):
     fillcolor(fill)
     begin_fill()
 
@@ -42,7 +73,7 @@ def hammer(r=1, fill='maroon'):
 
 
 def veer():
-    for _ in range(24):
+    for _ in range(12):
         hammer(5, colors[_])
         rt(30)
 
@@ -114,7 +145,7 @@ def contour():
 
 
 def shape_probe():
-    shape('square')
+    shape("square")
     shapesize(16, 8)
     shearfactor(-0.25)
     shapetransform()
@@ -129,5 +160,5 @@ def new_poly(side, angle):
 
 
 # Конец секции определения функций
-veer()
+contour()
 exitonclick()
