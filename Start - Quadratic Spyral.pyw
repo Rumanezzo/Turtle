@@ -25,13 +25,13 @@ def spiral():
     pd()
 
 
-def main(n_):
-    for i in range(n_):
+def main(n):
+    for i in range(n):
         spiral()
-        rt(360 / n_ + 360 / n_ * i)
+        rt(360 / n + 360 / n * i)
 
 
-n = int(numinput('Сколько спиралей?', '3-20', 5, 3, 20))
-main(n)
+n_ = int(numinput('Сколько спиралей?', '3-20', 5, 3, 20))
+main(n_)
 
 exitonclick()

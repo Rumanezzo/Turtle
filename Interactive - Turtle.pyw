@@ -7,7 +7,7 @@ color('green', 'blue')  # Цвет Линии и Заливки
 shape('turtle')  # Форма Черепашки
 width(5)  # Ширина Линии
 speed(0)  # Скорость Движения
-# ht()                                 # Спрятать Черепашку
+
 colors = ["aquamarine", "bisque", "burlywood", "chartreuse", "magenta", "moccasin", "navy", "plum", "tan", "thistle",
           "turquoise", "tomato", "red", "green", "blue", "orange", "purple", "pink", "yellow", "brown", "violet",
           "salmon", "gold", "lavender", "gainsboro", "cornsilk", "ivory", "linen", "honeydew", "maroon", "azure",
@@ -29,8 +29,6 @@ def left():
 def right():
     rt(30)
 
-
-# Конец секции определения функций
 
 onkey(up, "Up")
 onkey(left, 'Left')
