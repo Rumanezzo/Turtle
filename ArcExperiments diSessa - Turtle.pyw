@@ -1,14 +1,20 @@
 from turtle import *
+from random import shuffle
 
+setup(0.99, 0.9, 0, 0)  # Установка Размеров Окна относительное - пользуемся везде где можно!
 title("Эксперименты с Дугами и Цветами!")  # Заголовок
 mode("logo")  # Черепашка на север
 bgcolor("black")  # Цвет Фона
 color("gray", "green")  # Цвет Линии и Заливки
-shape("turtle")  # Форма Черепашки
-width(5)  # Ширина Линии
+shape("circle")  # Форма Черепашки
+shapesize(0.5)
+ht()
 speed(0)  # Скорость Движения
 
-colors = (
+w = window_width() // 2 - 16
+h = window_height() // 2 - 16
+
+colors = [
     "aquamarine",
     "bisque",
     "burlywood",
@@ -42,9 +48,15 @@ colors = (
     "azure",
     "sienna",
     "peru",
-)
+]
+
+n_clr = len(colors)
+
 
 # Начало секции определения функций
+
+def sgn(n):
+    return n // abs(n) if n != 0 else 0
 
 
 def arc_r(r, deg):
@@ -78,16 +90,17 @@ def veer():
         rt(30)
 
 
-def color_demo():
-    width(100)
-    pu()
-    lt(90)
-    fd(633)
-    rt(180)
-    pd()
-    for x in range(len(colors)):
-        color(colors[x])
-        fd(38)
+def colorizer(w_line):
+    width(w_line)
+    rt(90)
+    for _ in range(w_line // 2, window_height() + w_line, w_line):
+        pu()
+        goto(-window_width() // 2, window_height() // 2 - _)
+        pd()
+        shuffle(colors)
+        for x in colors:
+            color(x)
+            fd(window_width() // n_clr + 1)
 
 
 def petal(size=1):
@@ -108,57 +121,45 @@ def ray(r):
         arc_r(r, 90)
 
 
-def sun(size):
-    for x in range(9):
-        ray(size)
-        rt(160)
-
-
 def centre(x=0, y=0):
     pu()
-    setpos(x, y)
+    goto(x, y)
+    setheading(0)
     pd()
 
 
-def horns():
-    arc_l(1, 90)
-    arc_r(1, 90)
-    centre()
-
-    arc_r(1, 90)
-    arc_l(1, 90)
-    centre()
-
-
 def contour():
-    w = window_width() // 2 - 16
-    h = window_height() // 2 - 16
-    setpos(w, h)
+    for _ in range(200):
+        global w, h
+        w0, h0 = w, h
+        if _ % 4 == 0 or _ % 4 == 3:
+            w0, h0 = -w0, -h0
+        elif _ % 4 == 1:
+            h0 = -h0
+        elif _ % 4 == 2:
+            w0 = -w0
+        goto(sgn(w0) * (abs((abs(w0) - _ * 10)) % w), sgn(h0) * abs((abs(h0) - _ * 10) % h))
+        stamp()
+
+    goto(0, 0)
     stamp()
-    setpos(-w, h)
-    stamp()
-    setpos(w, -h)
-    stamp()
-    setpos(-w, -h)
-    stamp()
-    setpos(0, 0)
 
 
-def shape_probe():
-    shape("square")
-    shapesize(16, 8)
-    shearfactor(-0.25)
-    shapetransform()
+def imagination(count):
+    lng = (6, 4, 3, 2, 2)
+    rot = (30, 60, 120, 150, 160)
+    for _ in range(360 // count, 361, 360 // count):
+        for i, j in zip(lng, rot):
+            arc_r(i, j)
+            rt(150)
+            arc_l(i, j)
+        centre()
+        rt(_)
+        title(f'Повернулись на {_} градусов')
 
 
-def new_poly(side, angle):
-    for x in range(5):
-        fd(side)
-        rt(angle)
-        fd(side)
-        rt(2 * angle)
+# Секция Запуска Функций
+imagination(5)
 
-
-# Конец секции определения функций
-contour()
+title(f'Работа окончена!')
 exitonclick()
