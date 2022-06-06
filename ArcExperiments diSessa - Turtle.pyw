@@ -84,12 +84,6 @@ def hammer(r=1, fill="maroon"):
     end_fill()
 
 
-def veer():
-    for _ in range(12):
-        hammer(5, colors[_])
-        rt(30)
-
-
 def colorizer(w_line):
     width(w_line)
     rt(90)
@@ -110,8 +104,13 @@ def petal(size=1):
 
 
 def flower(size=1, k=2):
+    global colors
+    shuffle(colors)
     for x in range(6 * k):
+        fillcolor(colors[x % len(colors)])
+        begin_fill()
         petal(size)
+        end_fill()
         rt(60 / k)
 
 
@@ -158,8 +157,15 @@ def imagination(count):
         title(f'Повернулись на {_} градусов')
 
 
-# Секция Запуска Функций
-imagination(5)
+def multi_flower():
+    for _ in range(7, 2, -1):
+        flower(_, 1)
 
-title(f'Работа окончена!')
+
+# Секция Запуска Функций
+# imagination(5)
+# colorizer(60)
+multi_flower()
+
+title(f'Работа окончена! Всего задействовано  цветов: {len(colors)}')
 exitonclick()

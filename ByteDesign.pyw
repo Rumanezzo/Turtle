@@ -1,4 +1,4 @@
-from turtle import Turtle, exitonclick
+from turtle import Turtle, Screen, exitonclick
 from time import perf_counter as clock
 
 
@@ -129,12 +129,14 @@ class Designer(Turtle):
 
 def main():
     t = Designer()
+    s = Screen()
+    s.setup(0.99, 0.9, 0, 0)
     t.speed(0)
     t.hideturtle()
     t.getscreen().delay(0)
     t.getscreen().tracer(0)
     at = clock()
-    t.design(t.position(), 2)
+    t.design(t.position(), 3)
     et = clock()
     return f'runtime: {(et - at):.2f} sec.'
 

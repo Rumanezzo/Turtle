@@ -40,9 +40,9 @@ y = (0, 0, 150, -150, 150, -150, 0, 0)
 s = (1, -1, 2, -2, 2, -2, 2, -2)
 
 for clr0, i0, j, k in zip(c, x, y, s):
-    t = make_turtle(clr0, pos_x=i0, pos_y=j)
+    t0 = make_turtle(clr0, pos_x=i0, pos_y=j)
     wn.title(f'Создаем несколько черепашек и пусть они крутят спирали! -> {clr0} turtle is going!!!')
-    spiro(t, k)
+    spiro(t0, k)
 wn.title('Для завершения нажмите клавишу q, или просто кликнете по экрану левой клавишей мышки!')
 
 wn.onkey(wn.bye, 'q')
