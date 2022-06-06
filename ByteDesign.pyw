@@ -136,12 +136,16 @@ def main():
     t.getscreen().delay(0)
     t.getscreen().tracer(0)
     at = clock()
-    t.design(t.position(), 3)
+    for i in range(4):
+        t.design(t.position(), 2 * (i + 1))
+        t.color('white')
+        t.design(t.position(), 2 * (i + 1))
+        t.color('black')
+
     et = clock()
-    return f'runtime: {(et - at):.2f} sec.'
+    s.title(f'Фрактал - время прорисовки: {(et - at):.2f} сек.')
 
 
 if __name__ == '__main__':
-    msg = main()
-    print(msg)
+    main()
     exitonclick()
