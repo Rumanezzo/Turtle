@@ -1,36 +1,28 @@
-# Внимание! Этот файл поместить в PythonPath\Lib или в папку с программой - приоритетнее
-# После чего в проектах можно использовать import TurtleSetup с заданными настройками
-from turtle import *
+from turtle import Turtle, Screen
 
 
-def main():
-    exitonclick()
+class Trt(Turtle):
+    def __init__(self, color1='white', color2='green'):
+        super().__init__()
+        self.color(color1, color2)
+        self.shape('turtle')
+        self.width(3)
+        self.speed(5)
 
 
-# Screen()  # Создание Экрана s
-# title('Графика Черепашки!')  # Заголовок
-setup(0.95, 0.75)  # Размер Активного Окна в процентах от экрана в центре
-mode('logo')  # Черепашка на север
-colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "violet", "aquamarine", "bisque", "burlywood",
-          "chartreuse", "magenta", "moccasin", "navy", "plum", "tan", "thistle", "turquoise", "tomato", "brown",
-          "salmon", "gold", "lavender", "gainsboro", "cornsilk", "ivory", "linen", "honeydew", "maroon", "azure",
-          "sienna", "peru", "lightGrey"]
+s0 = Screen()
+s0.title('Черепашья Графика - предустановленные характеристики')
+s0.setup(0.99, 0.9, 0, 0)  # Установка Размеров Окна на весь экран - пользуемся везде где можно!
+s0.mode('logo')  # Черепашка на север
+s0.bgcolor('gray')
 
+t0 = Trt()
 
-bgcolor(colors[-1])  # Цвет Фона
-# Turtle() # Создание Черепашки
-color('white', 'red')  # Цвет Линии и Заливки
-shape('turtle')  # Форма Черепашки
-width(5)  # Ширина Линии
-speed(5)  # Скорость Движения
+colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "violet", "aquamarine", "bisque",
+          "burlywood", "chartreuse", "magenta", "moccasin", "navy", "plum", "tan", "thistle", "turquoise", "tomato",
+          "brown", "salmon", "gold", "lavender", "gainsboro", "cornsilk", "ivory", "linen", "honeydew", "maroon",
+          "azure", "sienna", "peru", "lightGrey", "grey"]
 
-# Начало секции определения функций
-
-
-# Конец секции определения функций
-# Начало Секции Вызовов
 
 if __name__ == '__main__':
-    main()
-
-# Конец Секции Вызовов
+    s0.exitonclick()

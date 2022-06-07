@@ -2,8 +2,6 @@ from turtle import Turtle, Screen, exitonclick
 from time import perf_counter as clock
 
 
-# wrapper for any additional drawing routines
-# that need to know about each other
 class Designer(Turtle):
 
     def design(self, home_pos, scale):
