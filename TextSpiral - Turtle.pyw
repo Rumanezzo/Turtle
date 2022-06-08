@@ -19,6 +19,7 @@ for x in range(264):
 goto(0, 0)
 color('red')
 clear()
-write(name, font=('FreeMono', 80, 'bold'), align='center')
+write(name, font=('Special Elite', 120, 'normal'), align='center')
 title('Программа закончила свою работу!')
+
 exitonclick()

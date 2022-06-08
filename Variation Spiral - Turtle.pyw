@@ -1,12 +1,11 @@
 from turtle import *
 
-setup(0.9, 0.75)
+setup(0.99, 0.9, 0, 0)
 bgcolor('black')  # Цвет Фона
 shape('turtle')  # Форма Черепашки
 width(5)  # Ширина Линии
 speed(0)  # Скорость Движения
-
-pen(pencolor='white')  # Настройки Пера
+color('white', 'black')
 
 # Начало Программы
 

@@ -4,9 +4,9 @@ title('Внезапная Находка в виде Солярного Симв
 mode('logo')  # Черепашка на север
 bgcolor('black')  # Цвет Фона
 shape('turtle')  # Форма Черепашки
-width(5)  # Ширина Линии
-speed(5)  # Скорость Движения
-pen(pencolor='white')  # Настройки Пера
+setup(0.99, 0.9, 0, 0)
+speed(0)  # Скорость Движения
+color('white', 'red')
 
 
 # Начало Программы
@@ -21,21 +21,21 @@ def six1(size):
         rt(120)
 
 
-def six(size):
-    for x in range(6):
-        width(6 // 2 ** x + 1)
+def poly(n, size):
+    for x in range(n, 0, -1):
+        width(x)
         fd(size)
-        rt(60)
+        rt(360 // n)
 
 
-def sun(count):
+def sun(count, n):
     for x in range(3 * count):
-        six(100)
+        poly(n, 100)
         lt(120 // count)
 
 
-six(100)
-sun(12)
+# poly(5, 180)
+sun(15, 12)
 
 # Конец Программы
 exitonclick()
