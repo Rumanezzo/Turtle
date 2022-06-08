@@ -17,22 +17,22 @@ from time import perf_counter as clock
 from turtle import Turtle, exitonclick
 
 
-def tree(plist, length, a, f):
+def tree(plist, length, alpha, factor):
     """ plist is list of pens
     'length' is length of branch
-    'a' is half of the angle between 2 branches
-    f is factor by which branch is shortened
+    'alpha' is half of the angle between 2 branches
+    'factor' is factor by which branch is shortened
     from level to level."""
     if length > 3:
         lst = []
         for p in plist:
             p.forward(length)
             q = p.clone()
-            p.left(a)
-            q.right(a)
+            p.left(alpha)
+            q.right(alpha)
             lst.append(p)
             lst.append(q)
-        for _ in tree(lst, length * f, a, f):
+        for _ in tree(lst, length * factor, alpha, factor):
             yield None
 
 
