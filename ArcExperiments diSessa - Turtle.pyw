@@ -59,16 +59,18 @@ def sgn(n):
     return n // abs(n) if n != 0 else 0
 
 
+def to_pos(x_pos, y_pos):
+    pu()
+    goto(x_pos, y_pos)
+    pd()
+
+
 def arc_r(r, deg):
-    for x in range(deg):
-        fd(r)
-        rt(1)
+    circle(-58 * r, deg)
 
 
 def arc_l(r, deg):
-    for x in range(deg):
-        fd(r)
-        lt(1)
+    circle(58 * r, deg)
 
 
 def hammer(r=1, fill="maroon"):
@@ -162,10 +164,32 @@ def multi_flower():
         flower(_, 1)
 
 
+def circle_drawing():
+    for i in range(20, 190, 10):
+
+        for j in range(10, 190, 10):
+            circle(j, i)
+            to_pos(0, 0)
+            circle(-j, i)
+            to_pos(0, 0)
+            rt(20)
+
+
+def circle_compare():
+    arc_r(3, 90)
+    goto(0, 0)
+    size = 58 * 3
+    lt(90)
+    circle(-size, 90)
+    goto(0, 0)
+    circle(size, 90)
+
+
 # Секция Запуска Функций
-# imagination(5)
+imagination(18)
 # colorizer(60)
-multi_flower()
+# multi_flower()
+# circle_drawing()
 
 title(f'Работа окончена! Всего задействовано  цветов: {len(colors)}')
 exitonclick()
