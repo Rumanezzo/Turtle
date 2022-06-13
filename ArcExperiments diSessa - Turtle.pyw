@@ -2,17 +2,19 @@ from turtle import *
 from random import shuffle
 
 setup(0.99, 0.9, 0, 0)  # Установка Размеров Окна относительное - пользуемся везде где можно!
-title("Эксперименты с Дугами и Цветами!")  # Заголовок
+title("Эксперименты на прорисовку!")  # Заголовок
 mode("logo")  # Черепашка на север
+
 bgcolor("black")  # Цвет Фона
-color("gray", "green")  # Цвет Линии и Заливки
+color("gray", '#4B5320')  # Цвет Линии и Заливки
 shape("circle")  # Форма Черепашки
 shapesize(0.5)
 ht()
 speed(0)  # Скорость Движения
 
-w = window_width() // 2 - 16
-h = window_height() // 2 - 16
+w = window_width() / 2 - 5
+h = window_height() / 2 - 5
+d = 8
 
 colors = [
     "aquamarine",
@@ -175,21 +177,50 @@ def circle_drawing():
             rt(20)
 
 
-def circle_compare():
-    arc_r(3, 90)
-    goto(0, 0)
-    size = 58 * 3
-    lt(90)
-    circle(-size, 90)
-    goto(0, 0)
-    circle(size, 90)
+def corner_maker(corner, flag=0):
+    if flag == 1:
+        rt(90)
+        circle(corner, 90)
+        rt(90)
+    elif flag == 2:
+        circle(-corner, 90)
+    else:
+        rt(90)
+        stamp()
+        fd(corner)
+        lt(90)
+        stamp()
+        fd(corner)
+        rt(90)
+        stamp()
+
+
+def frame_screen(corner):
+    global w, h, d
+    flag = 0
+    width(10)
+    to_pos(-w + corner, h)
+    setheading(0)
+    rt(90)
+    begin_fill()
+    goto(w - d - corner, h)
+    corner_maker(corner, flag)
+    goto(w - d, -h + d + corner)
+    corner_maker(corner, flag)
+    goto(-w + corner, -h + d)
+    corner_maker(corner, flag)
+    goto(-w, h - corner)
+    corner_maker(corner, flag)
+    end_fill()
 
 
 # Секция Запуска Функций
-imagination(18)
+# imagination(13)
 # colorizer(60)
 # multi_flower()
 # circle_drawing()
+frame_screen(60)
+
 
 title(f'Работа окончена! Всего задействовано  цветов: {len(colors)}')
 exitonclick()
